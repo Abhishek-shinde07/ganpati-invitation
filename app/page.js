@@ -178,9 +178,9 @@ export default function Invitation() {
               आपणास सस्नेह निमंत्रण !
             </p>
 
-            {/* Jharokha Temple Arch Frame */}
+           {/* Jharokha Temple Arch Frame - Frame stays original size, Ganesha image is smaller */}
             <div 
-              className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-cover bg-center bg-no-repeat shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden"
+              className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-8 bg-cover bg-center bg-no-repeat shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden"
               style={{ backgroundImage: "url('/temple-bg.png')" }}
             >
               <div className="absolute inset-0 bg-[#120502]/65 pointer-events-none z-0" />
@@ -189,7 +189,7 @@ export default function Invitation() {
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-full h-full object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
+                className="w-3/4 h-3/4 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
               />
             </div>
           </motion.section>
