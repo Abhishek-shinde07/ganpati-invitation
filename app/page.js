@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX, ExternalLink } from 'lucide-react';
+import { Volume2, VolumeX, ExternalLink, Calendar, MapPin } from 'lucide-react';
 
 export default function Invitation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function Invitation() {
       <div className="w-full max-w-md min-h-screen relative flex flex-col items-center shadow-2xl bg-[#FFFDF7]">
         
         {/* ========================================================== */}
-        {/* DOOR OVERLAY / COVER SCREEN (Screen 1) */}
+        {/* DOOR OVERLAY / COVER SCREEN */}
         {/* ========================================================== */}
         <AnimatePresence>
           {!isOpen && (
@@ -85,7 +85,7 @@ export default function Invitation() {
         </AnimatePresence>
 
         {/* ========================================================== */}
-        {/* MAIN INVITATION CONTENT (Screens 2 - 5) */}
+        {/* MAIN INVITATION CONTENT */}
         {/* ========================================================== */}
         <div className="w-full flex-1 flex flex-col items-center px-6 py-8 relative">
           
@@ -97,7 +97,7 @@ export default function Invitation() {
             {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
           </button>
 
-          {/* Section 1: Hero Header & Idol (Screen 2) */}
+          {/* Header & Image */}
           <section className="w-full flex flex-col items-center text-center mt-4">
             <span className="text-sm font-semibold text-[#8C5E1A] tracking-wider mb-2">
               ॥ श्री गणेशाय नमः ॥
@@ -109,75 +109,73 @@ export default function Invitation() {
               आपणास सस्नेह निमंत्रण !
             </p>
 
-            {/* Ganesha Frame */}
+            {/* Ganesha Image Frame */}
             <div className="relative w-64 h-80 rounded-t-full border-4 border-[#C9963B] p-2 bg-[#FFFDF7] shadow-xl overflow-hidden flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1567591374605-4f40f28e219f?q=80&w=800&auto=format&fit=crop" 
+                src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-full h-full object-cover rounded-t-full"
+                className="w-full h-full object-contain"
               />
             </div>
           </section>
 
           <hr className="w-full border-t border-[#E6C280] my-8" />
 
-          {/* Section 2: Host Invitation Details (Screen 3) */}
+          {/* Inviter & Date Card */}
           <section className="w-full bg-[#FFF8EA] rounded-2xl p-6 text-center border border-[#E6C280] shadow-sm mb-8">
             <span className="text-xs font-semibold text-[#8C5E1A]">
               ॥ सप्रेम निमंत्रक ॥
             </span>
-            <h2 className="text-2xl font-bold text-[#59260B] my-2">
-              देशपांडे परिवार
+            <h2 className="text-3xl font-bold text-[#59260B] my-2">
+              शिंदे परिवार
             </h2>
-            <p className="text-sm text-[#7A4B19] leading-relaxed">
-              आपण व आपल्या परिवारास सस्नेह निमंत्रण !
+            <p className="text-sm text-[#7A4B19] leading-relaxed mb-4">
+              गणरायाचे आगमन व दर्शनासाठी आपण व आपल्या परिवारास सस्नेह निमंत्रण !
             </p>
+
+            {/* Dates Badge */}
+            <div className="inline-flex items-center gap-2 bg-[#E6C280]/20 border border-[#C9963B] px-4 py-2 rounded-full text-xs font-semibold text-[#59260B]">
+              <Calendar size={16} className="text-[#8C5E1A]" />
+              <span>१४ सप्टेंबर ते २० सप्टेंबर २०२६</span>
+            </div>
           </section>
 
-          {/* Section 3: Venue & Map (Screen 4) */}
+          {/* Venue & Map Link Card */}
           <section className="w-full bg-[#4A2B11] text-[#FFF8EA] rounded-2xl p-6 text-center shadow-lg mb-8">
-            <h3 className="text-xl font-bold mb-4 text-[#E6C280]">
-              कार्यक्रम स्थळ
-            </h3>
-            
-            {/* Embedded Google Map */}
-            <div className="w-full h-44 rounded-lg overflow-hidden border border-[#8C5E1A] mb-4">
-              <iframe
-                title="Venue Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15131.782061957446!2d73.8474245!3d18.5308225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0883858f0dd%3A0x23a1a9e99c15330e!2sShivajinagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-              />
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <MapPin className="text-[#E6C280]" size={20} />
+              <h3 className="text-xl font-bold text-[#E6C280]">
+                कार्यक्रम स्थळ
+              </h3>
             </div>
 
-            <p className="font-semibold text-lg text-white mb-1">
-              देशपांडे निवास
+            <p className="font-bold text-lg text-white mb-2">
+              शिंदे निवास
             </p>
-            <p className="text-xs text-[#E6C280] leading-relaxed mb-4">
-              फ्लॅट नं. ४०२, श्री गणेशा अपार्टमेंट्स, शिवाजीनगर,<br />
-              पुणे - ४११००५
+            <p className="text-sm text-[#E6C280] leading-relaxed mb-6 px-2">
+              फ्लॅट - १७/१८, अनिल अपार्टमेंट्स,<br />
+              जगदुशा नगर, घाटकोपर (पश्चिम),<br />
+              मुंबई - ४०००८४
             </p>
 
             <a
-              href="https://maps.google.com/?q=Shivajinagar,Pune"
+              href="https://maps.app.goo.gl/MW8A4ruQRUiptPXs6"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#E6C280] text-[#3D1E03] px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:bg-[#D4A755] transition"
+              className="inline-flex items-center gap-2 bg-[#E6C280] text-[#3D1E03] px-6 py-3 rounded-full font-bold text-sm shadow-md hover:bg-[#D4A755] transition active:scale-95"
             >
-              <span>Open Maps</span>
+              <span>Open Google Maps</span>
               <ExternalLink size={16} />
             </a>
           </section>
 
-          {/* Section 4: Blessings Footer (Screen 5) */}
+          {/* Footer Blessings */}
           <section className="w-full text-center py-6 border-t border-[#E6C280]">
-            <p className="text-base font-semibold text-[#59260B] leading-relaxed mb-4">
+            <p className="text-base font-semibold text-[#59260B] leading-relaxed mb-3">
               आपली उपस्थिती हेच आमच्यासाठी बाप्पाचे खरे आशीर्वाद आहेत.
             </p>
             <span className="text-xs text-[#8C5E1A] italic">
-              — देशपांडे परिवार
+              — शिंदे परिवार
             </span>
           </section>
 
