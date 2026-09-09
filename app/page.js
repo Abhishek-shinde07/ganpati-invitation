@@ -49,7 +49,7 @@ export default function Invitation() {
         style={{ backgroundImage: "url('/bg-pattern.png')" }}
       >
         {/* Soft Overlay */}
-        <div className="absolute inset-0 bg-[#FFFDF8]/50 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-[#FFFDF8]/40 pointer-events-none z-0" />
 
         {/* Inner Gold Inset Frame Border */}
         <div className="absolute inset-2 border border-[#D4AF37]/50 rounded-none sm:rounded-2xl pointer-events-none z-20 flex flex-col justify-between p-2">
@@ -147,7 +147,7 @@ export default function Invitation() {
               >
                 <Sparkles className="w-5 h-5 text-[#FFD700] mb-1 animate-pulse" />
                 <span className="text-lg font-bold text-[#FFF8DC] drop-shadow-md leading-snug">
-                  ॥श्री गणेशाय नमः॥
+                  ॥ गणेशाय नमः ॥
                 </span>
                 <span className="text-[10px] tracking-[0.2em] text-[#FFE8A3] uppercase font-sans mt-1">
                   Tap To Open
@@ -194,7 +194,7 @@ export default function Invitation() {
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-11/12 h-11/12 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)] mt-2"
+                className="w-11/12 h-11/12 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)] mt-4"
               />
             </div>
           </motion.section>
