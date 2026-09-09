@@ -4,6 +4,16 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, VolumeX, ExternalLink, Calendar, MapPin, Sparkles, Heart } from 'lucide-react';
 
+// Animation variant for scroll fade-in
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: 'easeOut' } 
+  }
+};
+
 export default function Invitation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -30,26 +40,51 @@ export default function Invitation() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#120703] text-[#4A2E12] font-serif overflow-x-hidden flex justify-center items-center">
+    <div className="relative min-h-screen bg-[#0D0502] text-[#4A2E12] font-serif overflow-x-hidden flex justify-center items-center">
       {/* Background Audio */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
-      {/* Main Container */}
-      <div className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-[#FAF3E0] shadow-[0_0_60px_rgba(212,175,55,0.3)] border-x border-[#D4AF37]/40 overflow-hidden">
+      {/* Main Invitation Container */}
+      <div className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-gradient-to-b from-[#FFFDF8] via-[#FAF1DD] to-[#FCEECB] shadow-[0_0_60px_rgba(212,175,55,0.35)] border-x border-[#D4AF37]/40 overflow-hidden">
         
-        {/* Decorative Top Toran / Arch Overlay Accent */}
-        <div className="w-full h-3 bg-gradient-to-r from-[#8C5E1A] via-[#FFD700] to-[#8C5E1A] shadow-sm z-20" />
+        {/* ========================================================== */}
+        {/* TEMPLE TORAN & HANGING BELLS OVERLAY */}
+        {/* ========================================================== */}
+        <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none flex justify-between items-start px-4 pt-1">
+          {/* Left Hanging Bell & Marigold Garland */}
+          <div className="flex flex-col items-center animate-bell">
+            <div className="w-[2px] h-12 bg-gradient-to-b from-[#C9963B] to-[#FFD700]" />
+            <div className="w-6 h-6 rounded-full bg-[#FFD700] border-2 border-[#8C5E1A] shadow-md flex items-center justify-center text-[10px]">
+              🔔
+            </div>
+          </div>
+
+          {/* Center Decorative Temple Toran Arch */}
+          <div className="flex-1 flex justify-center items-center gap-1 opacity-90 px-2">
+            <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+            <span className="text-lg text-[#D4AF37] drop-shadow-sm">🌸 𑁍 🌸</span>
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+          </div>
+
+          {/* Right Hanging Bell */}
+          <div className="flex flex-col items-center animate-bell" style={{ animationDelay: '1.5s' }}>
+            <div className="w-[2px] h-12 bg-gradient-to-b from-[#C9963B] to-[#FFD700]" />
+            <div className="w-6 h-6 rounded-full bg-[#FFD700] border-2 border-[#8C5E1A] shadow-md flex items-center justify-center text-[10px]">
+              🔔
+            </div>
+          </div>
+        </div>
 
         {/* Floating Audio Button */}
         <button
           onClick={toggleAudio}
-          className="fixed top-5 right-5 z-40 bg-gradient-to-tr from-[#59260B] to-[#8C5E1A] text-[#FFD700] p-3 rounded-full shadow-2xl border-2 border-[#D4AF37] active:scale-90 transition-transform"
+          className="fixed top-5 right-5 z-40 bg-gradient-to-tr from-[#3D1E0B] to-[#8C5E1A] text-[#FFD700] p-3.5 rounded-full shadow-2xl border-2 border-[#D4AF37] active:scale-90 transition-transform"
         >
           {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} />}
         </button>
 
         {/* ========================================================== */}
-        {/* TEMPLE DOOR SLIDING OVERLAY */}
+        {/* SLIDING DOOR COVER SCREEN */}
         {/* ========================================================== */}
         <AnimatePresence>
           {!isOpen && (
@@ -59,22 +94,22 @@ export default function Invitation() {
             >
               {/* Left Door */}
               <motion.div
-                className="absolute top-0 left-0 w-1/2 h-full bg-[#1F0E05] border-r-2 border-[#D4AF37] flex items-center justify-end shadow-2xl"
+                className="absolute top-0 left-0 w-1/2 h-full bg-[#1A0B04] border-r-2 border-[#D4AF37] flex items-center justify-end shadow-2xl"
                 animate={isOpen ? { x: '-100%' } : { x: '0%' }}
                 transition={{ duration: 1.3, ease: [0.77, 0, 0.175, 1] }}
               >
-                <div className="w-full h-full opacity-30 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:20px_20px]" />
-                <div className="absolute right-3 top-0 bottom-0 w-[1px] bg-[#D4AF37]/50" />
+                <div className="w-full h-full opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:18px_18px]" />
+                <div className="absolute right-3 top-0 bottom-0 w-[1px] bg-[#D4AF37]/40" />
               </motion.div>
 
               {/* Right Door */}
               <motion.div
-                className="absolute top-0 right-0 w-1/2 h-full bg-[#1F0E05] border-l-2 border-[#D4AF37] flex items-center justify-start shadow-2xl"
+                className="absolute top-0 right-0 w-1/2 h-full bg-[#1A0B04] border-l-2 border-[#D4AF37] flex items-center justify-start shadow-2xl"
                 animate={isOpen ? { x: '100%' } : { x: '0%' }}
                 transition={{ duration: 1.3, ease: [0.77, 0, 0.175, 1] }}
               >
-                <div className="w-full h-full opacity-30 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:20px_20px]" />
-                <div className="absolute left-3 top-0 bottom-0 w-[1px] bg-[#D4AF37]/50" />
+                <div className="w-full h-full opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:18px_18px]" />
+                <div className="absolute left-3 top-0 bottom-0 w-[1px] bg-[#D4AF37]/40" />
               </motion.div>
 
               {/* Center Medallion Button */}
@@ -82,7 +117,7 @@ export default function Invitation() {
                 onClick={handleOpen}
                 exit={{ scale: 0, rotate: 180, opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="z-10 w-44 h-44 rounded-full bg-gradient-to-tr from-[#3D1E0B] via-[#8C5E1A] to-[#D4AF37] shadow-[0_0_40px_rgba(212,175,55,0.7)] border-4 border-[#FFF8DC] flex flex-col items-center justify-center text-center p-3 cursor-pointer active:scale-95 transition-transform"
+                className="z-10 w-44 h-44 rounded-full bg-gradient-to-tr from-[#3D1E0B] via-[#8C5E1A] to-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.8)] border-4 border-[#FFF8DC] flex flex-col items-center justify-center text-center p-3 cursor-pointer active:scale-95 transition-transform"
               >
                 <Sparkles className="w-5 h-5 text-[#FFD700] mb-1 animate-pulse" />
                 <span className="text-2xl font-bold text-[#FFF8DC] drop-shadow-md">
@@ -97,15 +132,16 @@ export default function Invitation() {
         </AnimatePresence>
 
         {/* ========================================================== */}
-        {/* MAIN INVITATION BODY */}
+        {/* SCROLLABLE INVITATION BODY (WITH FADE-IN ON SCROLL) */}
         {/* ========================================================== */}
-        <div className="w-full flex-1 flex flex-col items-center px-6 py-8 relative">
+        <div className="w-full flex-1 flex flex-col items-center px-6 pt-16 pb-12 relative z-10">
           
-          {/* Header Title */}
+          {/* Hero Section */}
           <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isOpen ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             className="w-full flex flex-col items-center text-center mt-2"
           >
             <span className="text-xs font-bold text-[#8C5E1A] tracking-widest uppercase mb-1">
@@ -118,30 +154,37 @@ export default function Invitation() {
               आपणास सस्नेह निमंत्रण !
             </p>
 
-            {/* Temple Idol Arch Frame */}
-            <div className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EC] to-[#FCEECB] shadow-[0_12px_30px_rgba(140,94,26,0.2)] flex items-center justify-center overflow-hidden">
+            {/* Temple Arch Ganesha Image Frame */}
+            <div className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-gradient-to-b from-[#FFFDF8] via-[#FFF9EC] to-[#FCEECB] shadow-[0_15px_35px_rgba(140,94,26,0.2)] flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:14px_14px] opacity-15" />
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-full h-full object-contain relative z-10 drop-shadow-xl"
+                className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
               />
             </div>
           </motion.section>
 
-          {/* Golden Divider */}
-          <div className="w-full flex items-center justify-center gap-3 my-8">
+          {/* Floral Divider */}
+          <motion.div 
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="w-full flex items-center justify-center gap-3 my-10"
+          >
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
-            <span className="text-[#D4AF37] text-sm">𑁍</span>
+            <span className="text-[#D4AF37] text-base">𑁍 🌺 𑁍</span>
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
-          </div>
+          </motion.div>
 
-          {/* Host & Date Card */}
+          {/* Host & Dates Card */}
           <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isOpen ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-full bg-[#FFFDF8] rounded-3xl p-6 text-center border-2 border-[#E6C280] shadow-[0_8px_20px_rgba(0,0,0,0.05)] mb-8"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="w-full bg-[#FFFDF8] rounded-3xl p-6 text-center border-2 border-[#E6C280] shadow-[0_10px_25px_rgba(0,0,0,0.06)] mb-10 relative"
           >
             <span className="text-xs font-bold text-[#8C5E1A] tracking-widest uppercase">
               ॥ सप्रेम निमंत्रक ॥
@@ -149,7 +192,7 @@ export default function Invitation() {
             <h2 className="text-3xl font-extrabold text-[#59260B] my-2">
               शिंदे परिवार
             </h2>
-            <p className="text-sm text-[#7A4B19] leading-relaxed mb-5 font-medium">
+            <p className="text-sm text-[#7A4B19] leading-relaxed mb-6 font-medium">
               गणरायाचे आगमन व दर्शनासाठी आपण व आपल्या परिवारास सस्नेह निमंत्रण !
             </p>
 
@@ -161,10 +204,11 @@ export default function Invitation() {
 
           {/* Venue Card */}
           <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isOpen ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="w-full bg-gradient-to-b from-[#3D1E0B] to-[#251004] text-[#FFF8EA] rounded-3xl p-6 text-center shadow-2xl mb-8 border border-[#D4AF37]/50"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="w-full bg-gradient-to-b from-[#3D1E0B] via-[#2A1205] to-[#1F0D03] text-[#FFF8EA] rounded-3xl p-6 text-center shadow-2xl mb-10 border border-[#D4AF37]/50 relative"
           >
             <div className="flex items-center justify-center gap-2 mb-3">
               <MapPin className="text-[#FFD700]" size={20} />
@@ -207,9 +251,10 @@ export default function Invitation() {
 
           {/* Blessing Footer */}
           <motion.section 
-            initial={{ opacity: 0 }}
-            animate={isOpen ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             className="w-full text-center py-6 border-t border-[#D4AF37]/40 flex flex-col items-center"
           >
             <Heart size={18} className="text-[#8C5E1A] mb-2 fill-[#8C5E1A]/20" />
