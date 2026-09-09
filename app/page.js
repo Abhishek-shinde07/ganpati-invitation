@@ -43,13 +43,28 @@ export default function Invitation() {
       {/* Background Audio */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
-      {/* Main Container - Royal Parchment Theme */}
-      <div className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-gradient-to-b from-[#FFF9EE] via-[#FDF3DE] to-[#F7E5C1] shadow-[0_0_60px_rgba(212,175,55,0.4)] border-x border-[#D4AF37]/50 overflow-hidden">
+      {/* Main Container - Royal Parchment Theme with Full Border */}
+      <div className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-gradient-to-b from-[#FFFDF8] via-[#FAF1DD] to-[#FCEECB] shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl">
         
+        {/* Full Page Low-Opacity Royal Pattern Watermark */}
+        <div className="absolute inset-0 bg-[radial-gradient(#C9963B_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-[0.08] pointer-events-none z-0" />
+
+        {/* Inner Gold Inset Frame Border */}
+        <div className="absolute inset-2 border border-[#D4AF37]/50 rounded-none sm:rounded-2xl pointer-events-none z-20 flex flex-col justify-between p-2">
+          <div className="flex justify-between text-xs text-[#D4AF37]">
+            <span>☸</span>
+            <span>☸</span>
+          </div>
+          <div className="flex justify-between text-xs text-[#D4AF37]">
+            <span>☸</span>
+            <span>☸</span>
+          </div>
+        </div>
+
         {/* ========================================================== */}
         {/* ROYAL DECORATIONS: LOTUS GARLANDS & SWINGING PEARL BELLS */}
         {/* ========================================================== */}
-        <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none flex justify-between items-start px-2 pt-1">
+        <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none flex justify-between items-start px-3 pt-2">
           {/* Left Hanging Pearl String with Brass Bell */}
           <div className="flex flex-col items-center animate-swing">
             <div className="flex flex-col items-center gap-1">
@@ -63,7 +78,7 @@ export default function Invitation() {
           </div>
 
           {/* Center Lotus Toran Garland */}
-          <div className="flex-1 flex flex-col items-center pt-1 px-1">
+          <div className="flex-1 flex flex-col items-center pt-2 px-1">
             <div className="flex justify-center items-center gap-2 text-xs text-[#E85D04]">
               <span>🪷</span>
               <span className="text-sm">🌸</span>
@@ -111,7 +126,6 @@ export default function Invitation() {
                 transition={{ duration: 1.3, ease: [0.77, 0, 0.175, 1] }}
               >
                 <div className="w-full h-full opacity-25 bg-[radial-gradient(#FFD700_1px,transparent_1px)] [background-size:20px_20px]" />
-                {/* Mandala Accent in Corner */}
                 <div className="absolute top-8 left-0 text-5xl text-[#D4AF37]/30">☸</div>
               </motion.div>
 
@@ -145,9 +159,9 @@ export default function Invitation() {
         </AnimatePresence>
 
         {/* ========================================================== */}
-        {/* MAIN INVITATION CONTENT (ROYAL JHAROKHA ARCH & PEACOCKS) */}
+        {/* MAIN INVITATION CONTENT */}
         {/* ========================================================== */}
-        <div className="w-full flex-1 flex flex-col items-center px-6 pt-14 pb-12 relative z-10">
+        <div className="w-full flex-1 flex flex-col items-center px-6 pt-16 pb-12 relative z-10">
           
           {/* Header Section */}
           <motion.section 
@@ -173,16 +187,16 @@ export default function Invitation() {
               आपणास सस्नेह निमंत्रण !
             </p>
 
-            {/* Jharokha Temple Arch Frame */}
-            <div className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-gradient-to-b from-[#FFFDF8] via-[#FFF5E1] to-[#FCE6B5] shadow-[0_15px_35px_rgba(112,26,51,0.2)] flex items-center justify-center overflow-hidden">
-              {/* Background Arch Pattern */}
-              <div className="absolute inset-0 bg-[radial-gradient(#C9963B_1px,transparent_1px)] [background-size:12px_12px] opacity-20" />
-              <div className="absolute top-2 text-2xl text-[#D4AF37]">𑁍</div>
+            {/* Jharokha Temple Arch Frame - DARK BG TO HIDE EDGES */}
+            <div className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-radial from-[#2A0612] via-[#1A030A] to-[#0D0105] shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden">
+              {/* Gold Filigree Accent Top */}
+              <div className="absolute top-3 text-xl text-[#FFD700] opacity-80 z-20">𑁍</div>
+              <div className="absolute inset-0 bg-[radial-gradient(#FFD700_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
               
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
+                className="w-full h-full object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
               />
             </div>
           </motion.section>
@@ -208,7 +222,6 @@ export default function Invitation() {
             viewport={{ once: true, amount: 0.3 }}
             className="w-full bg-gradient-to-b from-[#FFFDF8] to-[#FFF0D4] rounded-3xl p-6 text-center border-2 border-[#D4AF37] shadow-[0_10px_25px_rgba(0,0,0,0.06)] mb-10 relative overflow-hidden"
           >
-            {/* Corner Decorative Ornaments */}
             <div className="absolute top-2 left-2 text-xs text-[#D4AF37]">☸</div>
             <div className="absolute top-2 right-2 text-xs text-[#D4AF37]">☸</div>
 
@@ -229,13 +242,13 @@ export default function Invitation() {
             </div>
           </motion.section>
 
-          {/* Venue Card with Royal Deep Maroon & Peacock Palette */}
+          {/* Venue Card with Royal Deep Maroon & Gold Border */}
           <motion.section 
             variants={fadeUpVariant}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="w-full bg-gradient-to-b from-[#3B0A1A] via-[#2A0612] to-[#1A030A] text-[#FFF8EA] rounded-3xl p-6 text-center shadow-2xl mb-10 border border-[#D4AF37] relative overflow-hidden"
+            className="w-full bg-gradient-to-b from-[#3B0A1A] via-[#2A0612] to-[#1A030A] text-[#FFF8EA] rounded-3xl p-6 text-center shadow-2xl mb-10 border-2 border-[#D4AF37] relative overflow-hidden"
           >
             <div className="flex items-center justify-center gap-2 mb-3">
               <MapPin className="text-[#FFD700]" size={20} />
