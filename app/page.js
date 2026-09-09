@@ -180,7 +180,7 @@ export default function Invitation() {
               Ganesh Utsav 2026
             </h1>
             <p className="text-sm font-bold text-[#8C5E1A] mb-6">
-              Cordially Invites You & Your Family!
+              You & Your Family Are Cordially Invited!
             </p>
 
             {/* Jharokha Temple Arch Frame */}
@@ -194,7 +194,7 @@ export default function Invitation() {
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-11/12 h-11/12 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
+                className="w-11/12 h-11/12 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)] mt-2"
               />
             </div>
           </motion.section>
