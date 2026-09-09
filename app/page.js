@@ -43,11 +43,13 @@ export default function Invitation() {
       {/* Background Audio */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
-      {/* Main Container - Royal Parchment Theme with Full Border */}
-      <div className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-gradient-to-b from-[#FFFDF8] via-[#FAF1DD] to-[#FCEECB] shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl">
-        
-        {/* Full Page Low-Opacity Royal Pattern Watermark */}
-        <div className="absolute inset-0 bg-[radial-gradient(#C9963B_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-[0.08] pointer-events-none z-0" />
+      {/* Main Container with Custom Background Image */}
+      <div 
+        className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-cover bg-center bg-no-repeat shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl"
+        style={{ backgroundImage: "url('/bg-pattern.png')" }}
+      >
+        {/* Soft Overlay for text readability */}
+        <div className="absolute inset-0 bg-[#FFFDF8]/75 pointer-events-none z-0" />
 
         {/* Inner Gold Inset Frame Border */}
         <div className="absolute inset-2 border border-[#D4AF37]/50 rounded-none sm:rounded-2xl pointer-events-none z-20 flex flex-col justify-between p-2">
@@ -61,11 +63,8 @@ export default function Invitation() {
           </div>
         </div>
 
-        {/* ========================================================== */}
-        {/* ROYAL DECORATIONS: LOTUS GARLANDS & SWINGING PEARL BELLS */}
-        {/* ========================================================== */}
+        {/* Top Toran & Hanging Bells */}
         <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none flex justify-between items-start px-3 pt-2">
-          {/* Left Hanging Pearl String with Brass Bell */}
           <div className="flex flex-col items-center animate-swing">
             <div className="flex flex-col items-center gap-1">
               <span className="text-[10px]">🌸</span>
@@ -77,7 +76,6 @@ export default function Invitation() {
             </div>
           </div>
 
-          {/* Center Lotus Toran Garland */}
           <div className="flex-1 flex flex-col items-center pt-2 px-1">
             <div className="flex justify-center items-center gap-2 text-xs text-[#E85D04]">
               <span>🪷</span>
@@ -89,7 +87,6 @@ export default function Invitation() {
             <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mt-1" />
           </div>
 
-          {/* Right Hanging Pearl String with Brass Bell */}
           <div className="flex flex-col items-center animate-swing" style={{ animationDelay: '1.2s' }}>
             <div className="flex flex-col items-center gap-1">
               <span className="text-[10px]">🌸</span>
@@ -110,16 +107,14 @@ export default function Invitation() {
           {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} />}
         </button>
 
-        {/* ========================================================== */}
-        {/* ROYAL MANDALA SLIDING DOORS COVER */}
-        {/* ========================================================== */}
+        {/* Sliding Doors Cover */}
         <AnimatePresence>
           {!isOpen && (
             <motion.div 
               className="fixed inset-0 z-50 flex items-center justify-center max-w-md mx-auto overflow-hidden pointer-events-auto"
               exit={{ opacity: 0, transition: { delay: 1, duration: 0.6 } }}
             >
-              {/* Left Royal Velvet Door */}
+              {/* Left Door Panel */}
               <motion.div
                 className="absolute top-0 left-0 w-1/2 h-full bg-[#2A0C1B] border-r-2 border-[#D4AF37] flex items-center justify-end shadow-2xl"
                 animate={isOpen ? { x: '-100%' } : { x: '0%' }}
@@ -129,7 +124,7 @@ export default function Invitation() {
                 <div className="absolute top-8 left-0 text-5xl text-[#D4AF37]/30">☸</div>
               </motion.div>
 
-              {/* Right Royal Velvet Door */}
+              {/* Right Door Panel */}
               <motion.div
                 className="absolute top-0 right-0 w-1/2 h-full bg-[#2A0C1B] border-l-2 border-[#D4AF37] flex items-center justify-start shadow-2xl"
                 animate={isOpen ? { x: '100%' } : { x: '0%' }}
@@ -139,7 +134,7 @@ export default function Invitation() {
                 <div className="absolute top-8 right-0 text-5xl text-[#D4AF37]/30">☸</div>
               </motion.div>
 
-              {/* Center Royal Gold Medallion */}
+              {/* Center Royal Medallion Button */}
               <motion.button
                 onClick={handleOpen}
                 exit={{ scale: 0, rotate: 180, opacity: 0 }}
@@ -147,8 +142,8 @@ export default function Invitation() {
                 className="z-10 w-44 h-44 rounded-full bg-gradient-to-br from-[#501229] via-[#8C5E1A] to-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.9)] border-4 border-[#FFF8DC] flex flex-col items-center justify-center text-center p-3 cursor-pointer active:scale-95 transition-transform"
               >
                 <Sparkles className="w-5 h-5 text-[#FFD700] mb-1 animate-pulse" />
-                <span className="text-2xl font-bold text-[#FFF8DC] drop-shadow-md">
-                  गणपती नमः
+                <span className="text-xl font-bold text-[#FFF8DC] drop-shadow-md leading-snug">
+                  श्री गणेशाय नमः
                 </span>
                 <span className="text-[10px] tracking-[0.2em] text-[#FFE8A3] uppercase font-sans mt-1">
                   Tap To Open
@@ -158,12 +153,9 @@ export default function Invitation() {
           )}
         </AnimatePresence>
 
-        {/* ========================================================== */}
-        {/* MAIN INVITATION CONTENT */}
-        {/* ========================================================== */}
+        {/* Scrollable Content Body */}
         <div className="w-full flex-1 flex flex-col items-center px-6 pt-16 pb-12 relative z-10">
           
-          {/* Header Section */}
           <motion.section 
             variants={fadeUpVariant}
             initial="hidden"
@@ -171,7 +163,6 @@ export default function Invitation() {
             viewport={{ once: true, amount: 0.3 }}
             className="w-full flex flex-col items-center text-center mt-2 relative"
           >
-            {/* Peacock Motifs Flanking Title */}
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="text-2xl animate-float">🦚</span>
               <span className="text-xs font-bold text-[#8C5E1A] tracking-widest uppercase">
@@ -187,11 +178,13 @@ export default function Invitation() {
               आपणास सस्नेह निमंत्रण !
             </p>
 
-            {/* Jharokha Temple Arch Frame - DARK BG TO HIDE EDGES */}
-            <div className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-radial from-[#2A0612] via-[#1A030A] to-[#0D0105] shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden">
-              {/* Gold Filigree Accent Top */}
+            {/* Jharokha Temple Arch Frame */}
+            <div 
+              className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-3 bg-cover bg-center bg-no-repeat shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden"
+              style={{ backgroundImage: "url('/temple-bg.png')" }}
+            >
+              <div className="absolute inset-0 bg-[#120502]/65 pointer-events-none z-0" />
               <div className="absolute top-3 text-xl text-[#FFD700] opacity-80 z-20">𑁍</div>
-              <div className="absolute inset-0 bg-[radial-gradient(#FFD700_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
               
               <img 
                 src="/ganpati.png" 
@@ -201,7 +194,6 @@ export default function Invitation() {
             </div>
           </motion.section>
 
-          {/* Royal Lotus Separator */}
           <motion.div 
             variants={fadeUpVariant}
             initial="hidden"
@@ -214,7 +206,6 @@ export default function Invitation() {
             <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#C9963B] to-transparent" />
           </motion.div>
 
-          {/* Inviter Card with Rich Crimson & Gold Borders */}
           <motion.section 
             variants={fadeUpVariant}
             initial="hidden"
@@ -235,14 +226,12 @@ export default function Invitation() {
               गणरायाचे आगमन व दर्शनासाठी आपण व आपल्या परिवारास सस्नेह निमंत्रण !
             </p>
 
-            {/* Date Pill Badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FDE2E4] via-[#FFF0F2] to-[#FDE2E4] border border-[#B3261E] px-5 py-2.5 rounded-full text-xs font-bold text-[#701A33] shadow-sm">
               <Calendar size={16} className="text-[#B3261E]" />
               <span>१४ सप्टेंबर ते २० सप्टेंबर २०२६</span>
             </div>
           </motion.section>
 
-          {/* Venue Card with Royal Deep Maroon & Gold Border */}
           <motion.section 
             variants={fadeUpVariant}
             initial="hidden"
@@ -266,7 +255,6 @@ export default function Invitation() {
               मुंबई - ४०००८४
             </p>
 
-            {/* Map Frame */}
             <div className="w-full h-44 rounded-2xl overflow-hidden border border-[#D4AF37]/60 mb-6 shadow-inner">
               <iframe
                 title="Ghatkopar Map"
@@ -289,7 +277,6 @@ export default function Invitation() {
             </a>
           </motion.section>
 
-          {/* Blessing Footer */}
           <motion.section 
             variants={fadeUpVariant}
             initial="hidden"
