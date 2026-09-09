@@ -43,9 +43,9 @@ export default function Invitation() {
       {/* Background Audio */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
-      {/* Main Container with Full Width Background Pattern */}
+      {/* Main Container - Stretches Background Fully to Bottom Without Repeating */}
         <div 
-          className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-[length:100%_auto] bg-top bg-repeat shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl"
+          className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-[length:100%_100%] bg-no-repeat shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl"
           style={{ backgroundImage: "url('/bg-pattern.png')" }}
         >
         {/* Soft Overlay for text readability (Adjust /75 to change bg-pattern opacity) */}
