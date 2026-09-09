@@ -43,13 +43,13 @@ export default function Invitation() {
       {/* Background Audio */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
-      {/* Main Container - Stretches Background Fully to Bottom Without Repeating */}
-        <div 
-          className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-[length:100%_100%] bg-no-repeat shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl"
-          style={{ backgroundImage: "url('/bg-pattern.png')" }}
-        >
-        {/* Soft Overlay for text readability (Adjust /75 to change bg-pattern opacity) */}
-        <div className="absolute inset-0 bg-[#FFFDF8]/75 pointer-events-none z-0" />
+      {/* Main Container - Full Stretch Background */}
+      <div 
+        className="w-full max-w-md min-h-screen relative flex flex-col items-center bg-[length:100%_100%] bg-no-repeat shadow-[0_0_60px_rgba(212,175,55,0.4)] border-4 border-[#D4AF37] overflow-hidden m-0 sm:m-2 rounded-none sm:rounded-3xl"
+        style={{ backgroundImage: "url('/bg-pattern.png')" }}
+      >
+        {/* Soft Overlay */}
+        <div className="absolute inset-0 bg-[#FFFDF8]/60 pointer-events-none z-0" />
 
         {/* Inner Gold Inset Frame Border */}
         <div className="absolute inset-2 border border-[#D4AF37]/50 rounded-none sm:rounded-2xl pointer-events-none z-20 flex flex-col justify-between p-2">
@@ -63,15 +63,15 @@ export default function Invitation() {
           </div>
         </div>
 
-        {/* Top Toran & Hanging Bells */}
+        {/* Top Toran & Longer Hanging Bells */}
         <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none flex justify-between items-start px-3 pt-2">
           <div className="flex flex-col items-center animate-swing">
             <div className="flex flex-col items-center gap-1">
               <span className="text-[10px]">🌸</span>
-              <div className="w-[2px] h-10 bg-gradient-to-b from-[#FFD700] via-[#FFF8DC] to-[#C9963B]" />
+              <div className="w-[2px] h-20 bg-gradient-to-b from-[#FFD700] via-[#FFF8DC] to-[#C9963B]" />
               <span className="text-xs">🪷</span>
             </div>
-            <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFD700] to-[#C9963B] border border-[#8C5E1A] shadow-lg flex items-center justify-center text-xs mt-1">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-b from-[#FFD700] to-[#C9963B] border border-[#8C5E1A] shadow-lg flex items-center justify-center text-sm mt-1">
               🔔
             </div>
           </div>
@@ -90,10 +90,10 @@ export default function Invitation() {
           <div className="flex flex-col items-center animate-swing" style={{ animationDelay: '1.2s' }}>
             <div className="flex flex-col items-center gap-1">
               <span className="text-[10px]">🌸</span>
-              <div className="w-[2px] h-10 bg-gradient-to-b from-[#FFD700] via-[#FFF8DC] to-[#C9963B]" />
+              <div className="w-[2px] h-20 bg-gradient-to-b from-[#FFD700] via-[#FFF8DC] to-[#C9963B]" />
               <span className="text-xs">🪷</span>
             </div>
-            <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFD700] to-[#C9963B] border border-[#8C5E1A] shadow-lg flex items-center justify-center text-xs mt-1">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-b from-[#FFD700] to-[#C9963B] border border-[#8C5E1A] shadow-lg flex items-center justify-center text-xs mt-1">
               🔔
             </div>
           </div>
@@ -107,43 +107,47 @@ export default function Invitation() {
           {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} />}
         </button>
 
-        {/* Sliding Doors Cover Overlay */}
+        {/* ========================================================== */}
+        {/* SMOOTH HARDWARE-ACCELERATED SLIDING DOORS */}
+        {/* ========================================================== */}
         <AnimatePresence>
           {!isOpen && (
             <motion.div 
-              className="fixed inset-0 z-50 flex items-center justify-center max-w-md mx-auto overflow-hidden pointer-events-auto"
-              exit={{ opacity: 0, transition: { delay: 1, duration: 0.6 } }}
+              className="fixed inset-0 z-50 flex items-center justify-center max-w-md mx-auto overflow-hidden pointer-events-auto transform-gpu"
+              exit={{ opacity: 0, transition: { duration: 0.3, delay: 1.1 } }}
             >
-              {/* Left Door Panel */}
+              {/* Left Door */}
               <motion.div
-                className="absolute top-0 left-0 w-1/2 h-full bg-[#2A0C1B] border-r-2 border-[#D4AF37] flex items-center justify-end shadow-2xl"
+                className="absolute top-0 left-0 w-1/2 h-full bg-[#2A0C1B] border-r-2 border-[#D4AF37] flex items-center justify-end shadow-2xl will-change-transform transform-gpu"
+                initial={{ x: '0%' }}
                 animate={isOpen ? { x: '-100%' } : { x: '0%' }}
-                transition={{ duration: 1.3, ease: [0.77, 0, 0.175, 1] }}
+                transition={{ duration: 1.2, ease: [0.65, 0, 0.35, 1] }}
               >
                 <div className="w-full h-full opacity-25 bg-[radial-gradient(#FFD700_1px,transparent_1px)] [background-size:20px_20px]" />
                 <div className="absolute top-8 left-0 text-5xl text-[#D4AF37]/30">☸</div>
               </motion.div>
 
-              {/* Right Door Panel */}
+              {/* Right Door */}
               <motion.div
-                className="absolute top-0 right-0 w-1/2 h-full bg-[#2A0C1B] border-l-2 border-[#D4AF37] flex items-center justify-start shadow-2xl"
+                className="absolute top-0 right-0 w-1/2 h-full bg-[#2A0C1B] border-l-2 border-[#D4AF37] flex items-center justify-start shadow-2xl will-change-transform transform-gpu"
+                initial={{ x: '0%' }}
                 animate={isOpen ? { x: '100%' } : { x: '0%' }}
-                transition={{ duration: 1.3, ease: [0.77, 0, 0.175, 1] }}
+                transition={{ duration: 1.2, ease: [0.65, 0, 0.35, 1] }}
               >
                 <div className="w-full h-full opacity-25 bg-[radial-gradient(#FFD700_1px,transparent_1px)] [background-size:20px_20px]" />
                 <div className="absolute top-8 right-0 text-5xl text-[#D4AF37]/30">☸</div>
               </motion.div>
 
-              {/* Center Royal Medallion Button */}
+              {/* Center Medallion Button */}
               <motion.button
                 onClick={handleOpen}
-                exit={{ scale: 0, rotate: 180, opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="z-10 w-44 h-44 rounded-full bg-gradient-to-br from-[#501229] via-[#8C5E1A] to-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.9)] border-4 border-[#FFF8DC] flex flex-col items-center justify-center text-center p-3 cursor-pointer active:scale-95 transition-transform"
+                animate={isOpen ? { scale: 0.8, opacity: 0 } : { scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="z-10 w-44 h-44 rounded-full bg-gradient-to-br from-[#501229] via-[#8C5E1A] to-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.9)] border-4 border-[#FFF8DC] flex flex-col items-center justify-center text-center p-3 cursor-pointer active:scale-95 transition-transform will-change-transform"
               >
                 <Sparkles className="w-5 h-5 text-[#FFD700] mb-1 animate-pulse" />
                 <span className="text-lg font-bold text-[#FFF8DC] drop-shadow-md leading-snug">
-                  Shree Ganeshay Namah
+                  ॥ श्री गणेशाय नमः ॥
                 </span>
                 <span className="text-[10px] tracking-[0.2em] text-[#FFE8A3] uppercase font-sans mt-1">
                   Tap To Open
@@ -167,7 +171,7 @@ export default function Invitation() {
             <div className="flex items-center justify-center gap-2 mb-1">
               <span className="text-2xl animate-float">🦚</span>
               <span className="text-xs font-bold text-[#8C5E1A] tracking-widest uppercase">
-                ॥ Shree Ganeshay Namah ॥
+                ॥ श्री गणेशाय नमः ॥
               </span>
               <span className="text-2xl animate-float" style={{ animationDelay: '1.5s' }}>🦚</span>
             </div>
@@ -179,9 +183,9 @@ export default function Invitation() {
               Cordially Invites You & Your Family!
             </p>
 
-            {/* Jharokha Temple Arch Frame with Smaller Ganesha Idol */}
+            {/* Jharokha Temple Arch Frame */}
             <div 
-              className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-8 bg-cover bg-center bg-no-repeat shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden"
+              className="relative w-72 h-96 rounded-t-full border-4 border-[#D4AF37] p-4 bg-cover bg-center bg-no-repeat shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center justify-center overflow-hidden"
               style={{ backgroundImage: "url('/temple-bg.png')" }}
             >
               <div className="absolute inset-0 bg-[#120502]/65 pointer-events-none z-0" />
@@ -190,7 +194,7 @@ export default function Invitation() {
               <img 
                 src="/ganpati.png" 
                 alt="Lord Ganesha"
-                className="w-3/4 h-3/4 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
+                className="w-11/12 h-11/12 object-contain relative z-10 drop-shadow-[0_10px_20px_rgba(255,215,0,0.25)]"
               />
             </div>
           </motion.section>
@@ -229,7 +233,6 @@ export default function Invitation() {
               We solicit your esteemed presence to join us in seeking the divine blessings of Lord Ganesha!
             </p>
 
-            {/* Dates Pill Badge */}
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FDE2E4] via-[#FFF0F2] to-[#FDE2E4] border border-[#B3261E] px-5 py-2.5 rounded-full text-xs font-bold text-[#701A33] shadow-sm">
               <Calendar size={16} className="text-[#B3261E]" />
               <span>September 14 - September 20, 2026</span>
@@ -252,15 +255,14 @@ export default function Invitation() {
             </div>
 
             <p className="font-bold text-lg text-white mb-2">
-              Shinde Residence
+              Residence
             </p>
             <p className="text-xs sm:text-sm text-[#FFE8A3] leading-relaxed mb-6 font-sans opacity-95">
-              Flat No. 17/18, Anil Apartments,<br />
+              Flat No. 17-18, Anil Apartments,<br />
               Jagdusha Nagar, Ghatkopar (West),<br />
-              Mumbai - 400084
+              Mumbai - 400086
             </p>
 
-            {/* Google Map Frame */}
             <div className="w-full h-44 rounded-2xl overflow-hidden border border-[#D4AF37]/60 mb-6 shadow-inner">
               <iframe
                 title="Ghatkopar Map Location"
